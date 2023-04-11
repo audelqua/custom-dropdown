@@ -1,8 +1,6 @@
 import { useState } from "react"
-
 import { generateRandomNumber } from "../utils/generateRandomNumber";
 import {IItem, IUseAddItem} from '../types'
-
 
 const useAddItem = (): IUseAddItem => {
     const [items, setItems] = useState<IItem[]>([]);
@@ -15,21 +13,17 @@ const useAddItem = (): IUseAddItem => {
 
     const addItem = (event: any): void => {
         event.preventDefault()
+        if (newItem === "") return
 
-        if (newItem === "") {
-            return
-        }
-
-        const tempItems = [...items];
-        tempItems.push({id: generateRandomNumber(), text: newItem})
+        let tempItems = [ {id: generateRandomNumber(), text: newItem }, ...items ]
         setItems(tempItems)
         setItem("")
     }
 
     const selectItem = (id: string) => {
-        const item = items.find((i: IItem) => i.id === id);
-        setSelected(item);
-        setItem(item?.text!)
+        const tempItem = items.find((item: IItem) => item.id === id);
+        setSelected(tempItem);
+        if(tempItem) setItem(tempItem.text)
     }
 
     return {items, handleChange, addItem, newItem, selected, selectItem};

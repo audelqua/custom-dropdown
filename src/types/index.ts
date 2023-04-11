@@ -1,15 +1,13 @@
-
-
 export interface IItem {
-    id: string,
-    text: string,
+    id: string;
+    text: string;
 }
 
 export interface IUseAddItem {
-    items: IItem[],
-    handleChange: (item: string) => void,
-    addItem: (event: any) => void,
-    newItem: string,
-    selected: IItem | undefined,
-    selectItem: (id: string) => void,
+    items: IItem[];
+    newItem: string;
+    selected: IItem | undefined;
+    addItem: (event: any) => void;
+    handleChange: (item: string) => void;
+    selectItem: (id: string) => void;
 }

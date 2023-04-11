@@ -1,7 +1,6 @@
 import { useEffect, RefObject } from "react";
 
 type Event = MouseEvent | TouchEvent;
-
 const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
   callback: (event: Event) => void
